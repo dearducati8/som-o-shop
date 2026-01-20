@@ -29,13 +29,9 @@
 <body>
 
 <header>
-  <div style="display:flex; flex-direction:column; align-items:center; gap:.75rem">
-    <img src="logo.png" alt="SOM-O SHOP Logo" onclick="openLogo()" style="position:relative; z-index:1; width:210px; height:auto; border-radius:50%; box-shadow:0 15px 35px rgba(236,72,153,.45); cursor:pointer">
-    <p style="position:relative; z-index:1; margin:0; color:#000; font-size:1.35rem; font-weight:700; letter-spacing:.02em; opacity:1">🛒ร้านของคนรักสุขภาพ🛒</p>
-  </div>
+  <img src="logo.png" width="210" style="border-radius:50%; box-shadow:0 15px 35px rgba(236,72,153,.45)">
+  <p style="color:#000; font-size:1.35rem; font-weight:700">🛒 ร้านของคนรักสุขภาพ 🛒</p>
 </header>
-
-
 
 <div class="container">
   <div class="grid">
@@ -130,11 +126,8 @@
       text+=`${idx+1}. ${i.name} x${i.qty} ฿${i.price*i.qty}%0A`;
     });
     text+=`รวม ฿${total}`;
-    window.open('https://line.me/ti/p/t5-S6qXyAV?text='+text);
+    window.open('https://line.me/R/msg/text/?'+text);
   }
 </script>
 </body>
 </html>
-
-
-
