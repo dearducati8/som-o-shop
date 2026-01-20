@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOM-O SHOP | แคตตาล็อกสินค้า</title>
+  <style>
+    body{font-family:system-ui, sans-serif; margin:0; background:#fff1f5}
+    header{position:relative; overflow:hidden; background:linear-gradient(135deg,#fbcfe8,#f9a8d4,#f472b6); color:white; padding:3rem 1rem; text-align:center}
+header::before{content:""; position:absolute; inset:-20%; background:radial-gradient(circle at center, rgba(255,255,255,.6), rgba(255,255,255,0) 60%); filter:blur(40px)}
+    .container{max-width:1100px; margin:auto; padding:1rem}
+    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem}
+    .card{background:white; border-radius:16px; padding:1rem; box-shadow:0 10px 25px rgba(236,72,153,.15)}
+    .card img{width:100%; border-radius:8px}
+    .price{color:#ec4899; font-weight:bold; margin:.5rem 0; font-size:1.1rem}
+    button{background:#ec4899; color:white; border:none; padding:.7rem 1.2rem; border-radius:999px; cursor:pointer; font-size:1rem; transition:.2s} button:hover{background:#db2777}
+    footer{text-align:center; padding:1.5rem; color:#9d174d}
+  /* Mobile-first enhancement */
+    @media (max-width: 640px){
+      header{padding:2.5rem 1rem}
+      header h1{font-size:2rem; letter-spacing:.05em}
+      header p{font-size:.95rem; opacity:.95}
+
+      .container{padding:.75rem}
+
+      .grid{grid-template-columns:1fr; gap:1.25rem}
+
+      .card{padding:1.25rem}
+      .card h3{font-size:1.1rem; margin:.5rem 0}
+      .card img{border-radius:12px}
+
+      .price{font-size:1.25rem}
+
+      button{
+        width:100%;
+        padding:.9rem 1rem;
+        font-size:1.05rem;
+      }
+
+      footer{font-size:.85rem}
+    }
+  .line-float{position:fixed; right:16px; bottom:20px; background:#22c55e; color:white; padding:14px 18px; border-radius:999px; font-weight:bold; text-decoration:none; box-shadow:0 10px 25px rgba(34,197,94,.5); z-index:999}
+.modal{position:fixed; inset:0; background:rgba(0,0,0,.65); display:none; align-items:center; justify-content:center; z-index:1000}
+.modal img{max-width:90%; border-radius:24px; box-shadow:0 20px 50px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex; flex-direction:column; align-items:center; gap:.75rem">
+    <img src="logo.png" alt="SOM-O SHOP Logo" onclick="openLogo()" style="position:relative; z-index:1; width:170px; height:auto; border-radius:50%; box-shadow:0 15px 35px rgba(236,72,153,.45); cursor:pointer">
+  </div>
+</header>
+
+<div class="container">
+  <div class="grid">
+    <div class="card">
+      <img src="ไซโกะ.png" alt="สินค้า 1">
+      <h3>ไซโกะโนะ</h3>
+      <p class="price">฿299</p>
+      <button onclick="order('สินค้า 1')">สั่งซื้อ</button>
+    </div>
+
+    <div class="card">
+      <img src="product2.jpg" alt="สินค้า 2">
+      <h3>สินค้า 2</h3>
+      <p class="price">฿350</p>
+      <button onclick="order('สินค้า 2')">สั่งซื้อ</button>
+    </div>
+
+    <div class="card">
+      <img src="product3.jpg" alt="สินค้า 3">
+      <h3>สินค้า 3</h3>
+      <p class="price">฿420</p>
+      <button onclick="order('สินค้า 3')">สั่งซื้อ</button>
+    </div>
+
+    <div class="card">
+      <img src="product4.jpg" alt="สินค้า 4">
+      <h3>สินค้า 4</h3>
+      <p class="price">฿180</p>
+      <button onclick="order('สินค้า 4')">สั่งซื้อ</button>
+    </div>
+
+    <div class="card">
+      <img src="product5.jpg" alt="สินค้า 5">
+      <h3>สินค้า 5</h3>
+      <p class="price">฿250</p>
+      <button onclick="order('สินค้า 5')">สั่งซื้อ</button>
+    </div>
+
+    <div class="card">
+      <img src="product6.jpg" alt="สินค้า 6">
+      <h3>สินค้า 6</h3>
+      <p class="price">฿320</p>
+      <button onclick="order('สินค้า 6')">สั่งซื้อ</button>
+    </div>
+
+    <div class="card">
+      <img src="product7.jpg" alt="สินค้า 7">
+      <h3>สินค้า 7</h3>
+      <p class="price">฿390</p>
+      <button onclick="order('สินค้า 7')">สั่งซื้อ</button>
+    </div>
+
+    <div class="card">
+      <img src="product8.jpg" alt="สินค้า 8">
+      <h3>สินค้า 8</h3>
+      <p class="price">฿199</p>
+      <button onclick="order('สินค้า 8')">สั่งซื้อ</button>
+    </div>
+
+    <div class="card">
+      <img src="product9.jpg" alt="สินค้า 9">
+      <h3>สินค้า 9</h3>
+      <p class="price">฿275</p>
+      <button onclick="order('สินค้า 9')">สั่งซื้อ</button>
+    </div>
+
+    <div class="card">
+      <img src="product10.jpg" alt="สินค้า 10">
+      <h3>สินค้า 10</h3>
+      <p class="price">฿499</p>
+      <button onclick="order('สินค้า 10')">สั่งซื้อ</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer>
+  © 2026 SOM-O SHOP
+</footer>
+
+<!-- Floating LINE Button -->
+<a href="https://line.me/ti/p/t5-S6qXyAV" class="line-float">LINE</a>
+
+<!-- Logo Modal -->
+<div id="logoModal" class="modal" onclick="closeLogo()">
+  <img src="logo.png" alt="SOM-O SHOP Logo">
+</div>
+
+<script>
+  function order(product){
+    const lineId = "https://line.me/ti/p/t5-S6qXyAV"; // ใส่ LINE OA
+    const msg = encodeURIComponent(`สนใจสั่งซื้อ ${product}`);
+    window.open(`${lineId}?text=${msg}`);
+  }
+
+function openLogo(){document.getElementById('logoModal').style.display='flex'}
+function closeLogo(){document.getElementById('logoModal').style.display='none'}
+</script>
+
+</body>
+</html>
