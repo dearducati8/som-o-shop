@@ -264,11 +264,16 @@
   
 <script>
   // ===== Visitor Counter (ฟรี ไม่ต้องมี backend) =====
-  fetch('https://api.countapi.xyz/hit/somoshop/visits')
+  fetch('https://api.countapi.xyz/hit/somoshop-'+location.hostname+'/visits')
     .then(res => res.json())
     .then(res => {
       document.getElementById('visitorCount').innerText = res.value;
+    })
+    .catch(()=>{
+      document.getElementById('visitorCount').innerText = '0';
     });
+
 </script>
 </body>
 </html>
+
