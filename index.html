@@ -14,7 +14,37 @@
     .container{max-width:1100px; margin:auto; padding:1rem}
     .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem}
     .card{background:white; border-radius:16px; padding:1rem; box-shadow:0 10px 25px rgba(236,72,153,.15)}
-    .card img{width:100%; border-radius:8px}
+    .card{
+      background:white;
+      border-radius:16px;
+      padding:1rem;
+      box-shadow:0 10px 25px rgba(236,72,153,.15);
+      overflow:hidden;
+    }
+
+    .card img{
+      width:100%;
+      aspect-ratio:1/1;
+      height:420px; /* ขยายภาพให้ใหญ่ขึ้น */
+      object-fit:cover;
+      border-radius:12px;
+      display:block;
+      transition:transform .35s ease;
+    }
+
+    .card:hover img{
+      transform:scale(1.08);
+    }
+
+    /* เอฟเฟกต์กดแล้วเด้งแบบแอปมือถือ */
+    .card:active{
+      transform:scale(0.97);
+      transition:transform .1s ease;
+    }
+
+    .card{
+      transition:transform .15s ease;
+    }
     .price{color:#ec4899; font-weight:bold}
     button{background:#ec4899; color:white; border:none; padding:.6rem 1rem; border-radius:999px; cursor:pointer}
     footer{text-align:center; padding:1.5rem; color:#9d174d}
@@ -39,14 +69,14 @@
 <div class="container">
   <div class="grid">
     <div class="card"><img src="ไซโกะ.png"><h3>ไซโกะโนะ</h3><p class="price">฿299</p><button onclick="addToCart('ไซโกะโนะ',299)">เพิ่มลงตะกร้า</button></div>
-    <div class="card"><img src="white01.jpg"><h3>รองเท้าผ้าใบ</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ',350)">เพิ่มลงตะกร้า</button></div>
-    <div class="card"><img src="pink.jpg"><h3>รองเท้าแตะชมพู</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะชมพู',420)">เพิ่มลงตะกร้า</button></div>
-    <div class="card"><img src="white.jpg"><h3>รองเท้าแตะขาว</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะขาว',180)">เพิ่มลงตะกร้า</button></div>
-    <div class="card"><img src="white02.jpg"><h3>รองเท้าผ้าใบ</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ',250)">เพิ่มลงตะกร้า</button></div>
-    <div class="card"><img src="white03.jpg"><h3>รองเท้าผ้าใบ</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ',320)">เพิ่มลงตะกร้า</button></div>
-    <div class="card"><img src="new01.jpg"><h3>รองเท้าแตะ</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะ',199)">เพิ่มลงตะกร้า</button></div>
-    <div class="card"><img src="new02.jpg"><h3>รองเท้าแตะ</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะ',275)">เพิ่มลงตะกร้า</button></div>
-    <div class="card"><img src="allcolur.jpg"><h3>รองเท้าแตะ</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะ',499)">เพิ่มลงตะกร้า</button></div>
+    <div class="card"><img src="white01.jpg"><h3>รองเท้าผ้าใบ รุ่น White01</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ รุ่น White01',299)">เพิ่มลงตะกร้า</button></div>
+    <div class="card"><img src="pink.jpg"><h3>รองเท้าแตะชมพู</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะชมพู',199)">เพิ่มลงตะกร้า</button></div>
+    <div class="card"><img src="white.jpg"><h3>รองเท้าแตะขาว</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะขาว',199)">เพิ่มลงตะกร้า</button></div>
+    <div class="card"><img src="white02.jpg"><h3>รองเท้าผ้าใบ รุ่น White02</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ รุ่น White02',299)">เพิ่มลงตะกร้า</button></div>
+    <div class="card"><img src="white03.jpg"><h3>รองเท้าผ้าใบ รุ่น White03</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ รุ่น White03',299)">เพิ่มลงตะกร้า</button></div>
+    <div class="card"><img src="new01.jpg"><h3>รองเท้าแตะ รุ่น New01</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะ รุ่น New01',199)">เพิ่มลงตะกร้า</button></div>
+    <div class="card"><img src="new02.jpg"><h3>รองเท้าแตะ รุ่น New02</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะ รุ่น New02',199)">เพิ่มลงตะกร้า</button></div>
+    <div class="card"><img src="allcolur.jpg"><h3>รองเท้าแตะ ทุกสี</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะ ทุกสี',199)">เพิ่มลงตะกร้า</button></div>
     <div class="card"><img src="ไซโกะ.png"><h3>สินค้า 11</h3><p class="price">฿220</p><button onclick="addToCart('สินค้า 11',220)">เพิ่มลงตะกร้า</button></div>
     <div class="card"><img src="ไซโกะ.png"><h3>สินค้า 12</h3><p class="price">฿360</p><button onclick="addToCart('สินค้า 12',360)">เพิ่มลงตะกร้า</button></div>
   </div>
@@ -133,7 +163,3 @@
 </script>
 </body>
 </html>
-
-
-
-
