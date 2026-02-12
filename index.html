@@ -13,13 +13,10 @@
     header::before{content:""; position:absolute; inset:-20%; background:radial-gradient(circle at center, rgba(255,255,255,.35), rgba(255,255,255,0) 60%); filter:blur(20px)}
     .container{max-width:1100px; margin:auto; padding:1rem}
     .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem}
-    .card{background:white; border-radius:16px; padding:1rem; box-shadow:0 10px 25px rgba(236,72,153,.15)}
-    .card{
-      background:white;
-      border-radius:16px;
-      padding:1rem;
-      box-shadow:0 10px 25px rgba(236,72,153,.15);
-      overflow:hidden;
+    .card{background:white; border-radius:16px; padding:1rem; box-shadow:0 10px 25px rgba(236,72,153,.15); overflow:hidden; transition:transform .15s ease;}
+
+    .card:hover{
+      box-shadow:0 12px 35px rgba(0,0,0,.1);
     }
 
     .card img{
@@ -49,6 +46,29 @@
     .price{color:#ec4899; font-weight:bold}
     button{background:#ec4899; color:white; border:none; padding:.6rem 1rem; border-radius:999px; cursor:pointer}
     footer{text-align:center; padding:1.5rem; color:#9d174d}
+
+    /* Bottom Navigation แบบแอปมือถือ */
+    .bottom-nav{
+      position:fixed;
+      bottom:0;
+      left:0;
+      right:0;
+      height:65px;
+      background:#ffffff;
+      display:flex;
+      justify-content:space-around;
+      align-items:center;
+      box-shadow:0 -5px 20px rgba(0,0,0,.08);
+      border-top-left-radius:20px;
+      border-top-right-radius:20px;
+      z-index:1200;
+    }
+
+    .bottom-nav div{
+      font-size:.85rem;
+      text-align:center;
+      color:#555;
+    }
 
     .line-float{position:fixed; right:16px; bottom:20px; background:#22c55e; color:white; padding:14px 18px; border-radius:999px; font-weight:bold; text-decoration:none; z-index:999}
 
@@ -103,6 +123,15 @@
       cursor:pointer;
     }
   </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZE5ZCJ03PY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    gtag('js', new Date());
+    gtag('config', 'G-ZE5ZCJ03PY');
+  </script>
 </head>
 <body>
 
@@ -113,16 +142,17 @@
 
 <div class="container">
   <div class="grid">
-        <div class="card"><img src="white01.jpg"><h3>รองเท้าผ้าใบ</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ รุ่น White01',299)">เพิ่มลงตะกร้า</button></div>
+    <div class="card"><img src="ไซโกะ.png"><h3>ไซโกะโนะ</h3><p class="price">฿299</p><button onclick="addToCart('ไซโกะโนะ',299)">เพิ่มลงตะกร้า</button></div>
+    <div class="card"><img src="white01.jpg"><h3>รองเท้าผ้าใบ รุ่น White01</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ รุ่น White01',299)">เพิ่มลงตะกร้า</button></div>
     <div class="card"><img src="pink.jpg"><h3>รองเท้าแตะชมพู</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะชมพู',199)">เพิ่มลงตะกร้า</button></div>
     <div class="card"><img src="white.jpg"><h3>รองเท้าแตะขาว</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะขาว',199)">เพิ่มลงตะกร้า</button></div>
     <div class="card"><img src="white02.jpg"><h3>รองเท้าผ้าใบ</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ',299)">เพิ่มลงตะกร้า</button></div>
-    <div class="card"><img src="white03.jpg"><h3>รองเท้าผ้าใบ</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ รุ่น',299)">เพิ่มลงตะกร้า</button></div>
+    <div class="card"><img src="white03.jpg"><h3>รองเท้าผ้าใบ</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ',299)">เพิ่มลงตะกร้า</button></div>
     <div class="card"><img src="new01.jpg"><h3>รองเท้าแตะ</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะ',199)">เพิ่มลงตะกร้า</button></div>
     <div class="card"><img src="new02.jpg"><h3>รองเท้าแตะ</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะ',199)">เพิ่มลงตะกร้า</button></div>
     <div class="card"><img src="allcolur.jpg"><h3>รองเท้าแตะ ทุกสี</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะ ทุกสี',199)">เพิ่มลงตะกร้า</button></div>
     <div class="card"><img src="new03.jpg"><h3>รองเท้าแตะ</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะ',220)">เพิ่มลงตะกร้า</button></div>
-    <div class="card"><img src="ไซโกะ.png"><h3>ไซโกโนะ</h3><p class="price">฿390</p><button onclick="addToCart('ไซโกโนะ',360)">เพิ่มลงตะกร้า</button></div>
+    <div class="card"><img src="ไซโกะ.png"><h3>ไซโกโน๊ะ</h3><p class="price">฿360</p><button onclick="addToCart('ไซโกโน๊ะ',360)">เพิ่มลงตะกร้า</button></div>
   </div>
 </div>
 
@@ -226,6 +256,7 @@
     document.getElementById('imgModal').style.display='none';
   }
 </script>
+
+
 </body>
 </html>
-
