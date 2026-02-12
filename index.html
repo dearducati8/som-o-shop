@@ -272,8 +272,18 @@
     .catch(()=>{
       document.getElementById('visitorCount').innerText = '0';
     });
+  }
+
+
+updateOnline();
+
+
+window.addEventListener('beforeunload', function(){
+navigator.sendBeacon('https://api.countapi.xyz/hit/somoshop-'+location.hostname+'/online?amount=-1');
+});
 
 </script>
 </body>
 </html>
+
 
