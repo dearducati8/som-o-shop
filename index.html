@@ -159,6 +159,8 @@
 <footer>
   © 2026 SOM-O SHOP<br>
   👀 ผู้เข้าชมทั้งหมด: <span id="visitorCount">...</span>
+  🟢 ออนไลน์ตอนนี้: <span id="onlineCount">...</span>
+
 </footer>
 
 <a href="https://line.me/ti/p/t5-S6qXyAV" class="line-float">LINE</a>
@@ -264,26 +266,27 @@
   
 <script>
   // ===== Visitor Counter (ฟรี ไม่ต้องมี backend) =====
-  fetch('https://api.countapi.xyz/hit/somoshop-'+location.hostname+'/visits')
-    .then(res => res.json())
-    .then(res => {
-      document.getElementById('visitorCount').innerText = res.value;
-    })
-    .catch(()=>{
-      document.getElementById('visitorCount').innerText = '0';
-    });
-  }
+ fetch('https://api.countapi.xyz/hit/somoshop-'+location.hostname+'/online');
 
+function updateOnline(){
+  fetch('https://api.countapi.xyz/get/somoshop-'+location.hostname+'/online')
+    .then(res=>res.json())
+    .then(res=>{
+      document.getElementById('onlineCount').innerText = res.value || 1;
+    });
+}
 
 updateOnline();
 
-
 window.addEventListener('beforeunload', function(){
-navigator.sendBeacon('https://api.countapi.xyz/hit/somoshop-'+location.hostname+'/online?amount=-1');
+  navigator.sendBeacon(
+    'https://api.countapi.xyz/hit/somoshop-'+location.hostname+'/online?amount=-1'
+  );
 });
 
 </script>
 </body>
 </html>
+
 
 
