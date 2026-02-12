@@ -265,28 +265,25 @@
 
   
 <script>
-  // ===== Visitor Counter (ฟรี ไม่ต้องมี backend) =====
- fetch('https://api.countapi.xyz/hit/somoshop-'+location.hostname+'/online');
+// ===== Online Now Counter (เสถียรกว่า) =====
 
-function updateOnline(){
-  fetch('https://api.countapi.xyz/get/somoshop-'+location.hostname+'/online')
-    .then(res=>res.json())
-    .then(res=>{
-      document.getElementById('onlineCount').innerText = res.value || 1;
-    });
-}
+// เพิ่มจำนวนเมื่อเข้าเว็บ
+fetch('https://api.countapi.xyz/hit/somoshop-'+location.hostname+'/online');
 
-updateOnline();
-
-window.addEventListener('beforeunload', function(){
-  navigator.sendBeacon(
-    'https://api.countapi.xyz/hit/somoshop-'+location.hostname+'/online?amount=-1'
-  );
-});
+// ดึงค่ามาแสดง
+fetch('https://api.countapi.xyz/get/somoshop-'+location.hostname+'/online')
+  .then(res => res.json())
+  .then(res => {
+    document.getElementById('onlineCount').innerText = res.value || 1;
+  })
+  .catch(()=>{
+    document.getElementById('onlineCount').innerText = '1';
+  });
 
 </script>
 </body>
 </html>
+
 
 
 
