@@ -24,9 +24,10 @@
 
     .card img{
       width:100%;
-      aspect-ratio:1/1;
-      height:420px; /* ขยายภาพให้ใหญ่ขึ้น */
-      object-fit:cover;
+      height:auto; /* ให้ภาพแสดงเต็มไม่ถูกตัด */
+      max-height:420px; /* จำกัดความสูงไม่ให้ยาวเกิน */
+      object-fit:contain; /* แสดงภาพเต็ม */
+      background:#fff; /* กันพื้นที่ว่างดูสะอาด */
       border-radius:12px;
       display:block;
       transition:transform .35s ease;
@@ -57,6 +58,50 @@
     .cart-item{display:flex; justify-content:space-between; align-items:center; margin:.5rem 0}
     .qty{display:flex; gap:.4rem; align-items:center}
     .qty button{padding:.2rem .6rem}
+  
+    /* ===== Fullscreen Image Viewer ===== */
+    .img-modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.85);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:2000;
+      padding:1rem;
+    }
+
+    .img-modal img{
+      max-width:95%;
+      max-height:95%;
+      border-radius:16px;
+      box-shadow:0 20px 60px rgba(0,0,0,.6);
+      animation:zoomIn .25s ease;
+    }
+
+    .close-btn{
+      position:absolute;
+      top:20px;
+      right:20px;
+      background:rgba(255,255,255,.15);
+      backdrop-filter:blur(6px);
+      border:none;
+      color:#fff;
+      font-size:28px;
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      cursor:pointer;
+    }
+
+    @keyframes zoomIn{
+      from{transform:scale(.85); opacity:0}
+      to{transform:scale(1); opacity:1}
+    }
+
+    .card img{
+      cursor:pointer;
+    }
   </style>
 </head>
 <body>
@@ -68,14 +113,13 @@
 
 <div class="container">
   <div class="grid">
-    <div class="card"><img src="ไซโกะ.png"><h3>ไซโกะโนะ</h3><p class="price">฿299</p><button onclick="addToCart('ไซโกะโนะ',299)">เพิ่มลงตะกร้า</button></div>
-    <div class="card"><img src="white01.jpg"><h3>รองเท้าผ้าใบ รุ่น White01</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ รุ่น White01',299)">เพิ่มลงตะกร้า</button></div>
+        <div class="card"><img src="white01.jpg"><h3>รองเท้าผ้าใบ</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ รุ่น White01',299)">เพิ่มลงตะกร้า</button></div>
     <div class="card"><img src="pink.jpg"><h3>รองเท้าแตะชมพู</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะชมพู',199)">เพิ่มลงตะกร้า</button></div>
     <div class="card"><img src="white.jpg"><h3>รองเท้าแตะขาว</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะขาว',199)">เพิ่มลงตะกร้า</button></div>
-    <div class="card"><img src="white02.jpg"><h3>รองเท้าผ้าใบ รุ่น White02</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ รุ่น White02',299)">เพิ่มลงตะกร้า</button></div>
-    <div class="card"><img src="white03.jpg"><h3>รองเท้าผ้าใบ รุ่น White03</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ รุ่น White03',299)">เพิ่มลงตะกร้า</button></div>
-    <div class="card"><img src="new01.jpg"><h3>รองเท้าแตะ รุ่น New01</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะ รุ่น New01',199)">เพิ่มลงตะกร้า</button></div>
-    <div class="card"><img src="new02.jpg"><h3>รองเท้าแตะ รุ่น New02</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะ รุ่น New02',199)">เพิ่มลงตะกร้า</button></div>
+    <div class="card"><img src="white02.jpg"><h3>รองเท้าผ้าใบ</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ',299)">เพิ่มลงตะกร้า</button></div>
+    <div class="card"><img src="white03.jpg"><h3>รองเท้าผ้าใบ</h3><p class="price">฿299</p><button onclick="addToCart('รองเท้าผ้าใบ รุ่น',299)">เพิ่มลงตะกร้า</button></div>
+    <div class="card"><img src="new01.jpg"><h3>รองเท้าแตะ</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะ',199)">เพิ่มลงตะกร้า</button></div>
+    <div class="card"><img src="new02.jpg"><h3>รองเท้าแตะ</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะ',199)">เพิ่มลงตะกร้า</button></div>
     <div class="card"><img src="allcolur.jpg"><h3>รองเท้าแตะ ทุกสี</h3><p class="price">฿199</p><button onclick="addToCart('รองเท้าแตะ ทุกสี',199)">เพิ่มลงตะกร้า</button></div>
     <div class="card"><img src="ไซโกะ.png"><h3>สินค้า 11</h3><p class="price">฿220</p><button onclick="addToCart('สินค้า 11',220)">เพิ่มลงตะกร้า</button></div>
     <div class="card"><img src="ไซโกะ.png"><h3>สินค้า 12</h3><p class="price">฿360</p><button onclick="addToCart('สินค้า 12',360)">เพิ่มลงตะกร้า</button></div>
@@ -159,6 +203,27 @@
     });
     text+=`รวม ฿${total}`;
     window.open('https://line.me/R/msg/text/?'+text);
+  }
+</script>
+
+
+<!-- Fullscreen Image Modal -->
+<div id="imgModal" class="img-modal">
+  <button class="close-btn" onclick="closeImg()">✕</button>
+  <img id="modalImg" src="">
+</div>
+
+<script>
+  // ทำให้รูปทุกใบคลิกได้
+  document.querySelectorAll('.card img').forEach(img=>{
+    img.addEventListener('click', function(){
+      document.getElementById('modalImg').src = this.src;
+      document.getElementById('imgModal').style.display='flex';
+    });
+  });
+
+  function closeImg(){
+    document.getElementById('imgModal').style.display='none';
   }
 </script>
 </body>
